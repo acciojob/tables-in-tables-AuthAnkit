@@ -1,14 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <table style="width: 100%; height: 100%">
-      <!-- Your code here -->
-    </table>
-  </body>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nested Tables - Corrected</title>
+<style>
+  /* General */
+  body { margin: 10px; font-family: "Times New Roman", Georgia, serif; }
+  table { border-collapse: collapse; width: 100%; }
+
+  /* Outer main table border similar to reference */
+  .main-table { border: 4px solid #222; height: 600px; }
+
+  .main-table td {
+    vertical-align: top;
+    padding: 8px;
+    border: 2px solid #666; /* the vertical/horizontal separators */
+  }
+
+  /* Each nested table is visually boxed with its own header style */
+  .nested {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0;
+  }
+
+  .nested th,
+  .nested td {
+    border: 2px solid #333;
+    padding: 8px;
+    text-align: center;
+  }
+
+  /* Framed header look: smaller inner border around header text */
+  .nested thead th {
+    background: #fff;
+    font-weight: bold;
+    padding: 10px 6px;
+    font-size: 1.05em;
+  }
+  .header-frame {
+    border: 4px solid #999;
+    display: inline-block;
+    padding: 4px 12px;
+    background: #fff;
+  }
+
+  /* Content boxes inside nested tables (double framed) */
+  .content-box {
+    margin: 8px;
+    border: 3px solid #bfbfbf;
+    padding: 12px;
+    background: #fff;
+  }
+
+  /* Nested Table 1 specific layout: left bullets, right text column */
+  .two-column-inner {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .two-column-inner td { border: none; padding: 0; vertical-align: middle; }
+
+  .bullets {
+    width: 25%;
+    text-align: left;
+    padding-left: 18px;
+  }
+  .bullet-list { list-style: disc; margin: 0; padding-left: 20px; }
+  .list-text {
+    width: 75%;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 1.05em;
+  }
+
+  /* Nested Table 3: link styling */
+  .nested a { color: #6b2ea7; text-decoration: underline; font-weight: normal; }
+
+  /* Nested Table 4: black bar with white text */
+  .black-bar {
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+  }
+
+  /* Small inner spacing for bottom tables */
+  .small-row td { padding: 4px 6px; }
+</style>
+</head>
+<body>
+
+<table class="main-table" border="0">
+  <tr>
+    <!-- LEFT TOP: Nested Table 2 -->
+    <td>
+      <table class="nested" role="presentation">
+        <thead>
+          <tr><th colspan="2"><span class="header-frame">Nested Table 2</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+          </tr>
+          <tr>
+            <td>abc</td>
+            <td>def</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- empty space under nested table like reference -->
+      <div style="height:120px;"></div>
+    </td>
+
+    <!-- RIGHT TOP: Nested Table 1 -->
+    <td>
+      <table class="nested" role="presentation">
+        <thead>
+          <tr><th><span class="header-frame">Nested Table 1</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="content-box">
+                <table class="two-column-inner" role="presentation">
+                  <tr>
+                    <td class="bullets">
+                      <ul class="bullet-list">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                      </ul>
+                    </td>
+                    <td class="list-text">
+                      <div style="margin-bottom:8px;">List item</div>
+                      <div style="margin-bottom:8px;">List item</div>
+                      <div>List item</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="height:30px;"></div>
+    </td>
+  </tr>
+
+  <!-- Horizontal dividing line (main table row separation) is created by table borders -->
+  <tr>
+    <!-- BOTTOM LEFT: Nested Table 3 -->
+    <td>
+      <table class="nested small-row" role="presentation">
+        <thead>
+          <tr><th colspan="2"><span class="header-frame">Nested Table 3</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width:55%; text-align:left;"><a href="#">Nested Table</a></td>
+            <td style="width:45%;">Demo Continued</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+
+    <!-- BOTTOM RIGHT: Nested Table 4 -->
+    <td>
+      <table class="nested" role="presentation">
+        <thead>
+          <tr><th><span class="header-frame">Nested Table 4</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="black-bar">HTML</td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
 </html>
